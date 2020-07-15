@@ -1,0 +1,23 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> images ###
+/public/assets/images/category_picto/*
+/public/assets/images/social_picto/*
+/public/assets/images/image_announcement/*
+/public/assets/images/avatar_user/*
+###< images ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
