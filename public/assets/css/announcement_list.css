@@ -1,0 +1,22 @@
+.img_resize{
+    height:35px;
+    width:35px;
+}
+
+.list__wrapper {
+    background-image: url('../images/dashboard.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0 1.2em;
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.announcement__content{
+    max-width: 60%;
+}
+.announcement__date{
+    font-size: small;
+}

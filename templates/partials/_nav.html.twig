@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg d-flex justify-content-between fixed-top 
+{% if (app.user) %}
+  {% if "ROLE_INFLUENCER" in app.user.roles %}
+  {{ "navbar-light bg-info" }}
+  {% elseif "ROLE_BRAND" in app.user.roles %}
+  {{ "navbar-dark bg-dark" }}
+  {% endif %}
+{% else %}
+{{" navbar-light bg-light"}}
+{% endif %}
+">
+  <a class="navbar-brand" href=" {{ path('homepage') }}"><span class="brand__label">O'dience</span></a>
+ {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarNav">
+    <ul class="navbar-nav">
+      {# <li class="nav-item active">
+        <a class="nav-link" href="#">Mes messages </a>
+      </li> #}
+      {% if 'ROLE_INFLUENCER' in app.user.roles %}
+      <li class="nav-item {{ ( app.request.get('_route') == 'announcement_list') ? 'font-weight-bold' : '' }}">
+        <a class="nav-link" href="{{path('announcement_list')}}">LISTE DES ANNONCES</a>
+      </li>
+      <li class="nav-item {{ ( app.request.get('_route') == 'user_list') ? 'font-weight-bold' : '' }}">
+        <a class="nav-link" href="{{path('user_list', {'role': 'marque'})}}">LISTE DES MARQUES</a>
+      </li>
+      {% elseif 'ROLE_BRAND' in app.user.roles %}
+      <li class="nav-item {{ ( app.request.get('_route') == 'user_list') ? 'font-weight-bold' : '' }}">
+        <a class="nav-link" href="{{path('user_list', {'role': 'influenceur'})}}">LISTE DES INFLUENCEURS</a>
+      </li>
+      {% endif %}
+      <li class="nav-item {{ ( app.request.get('_route') == 'user_dashboard') ? 'font-weight-bold' : '' }}">
+        <a class="nav-link" href="{{path('user_dashboard', {'id': app.user.id})}}">TABLEAU DE BORD</a>
+      </li>
+    </ul>
+    {% endif %}
+    <div>
+      {% if app.user %}
+        <a href="{{ path('app_logout') }}"><button type="button" class="btn btn-danger" data-toggle="button" aria-pressed="false">Se déconnecter</button></a>
+    {% endif %}
+     {% if not app.user %}
+  <a href="{{ path('app_login') }}"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">Se connecter</button></a>
+  {% endif %}
+    </div>
+  </div>
+ 
+
+</nav>
