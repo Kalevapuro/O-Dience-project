@@ -1,4 +1,4 @@
-# O-dience-project v1
+# O-dience-project v0.1
 End of studies project
 
 You can access code on dev branch.
